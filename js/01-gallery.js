@@ -30,23 +30,20 @@ let onEscapeBtnPush;
 
 function onPictureClick(event) {
     event.preventDefault();
-    const { target } = event;
-    const targetImg = galleryElements.querySelectorAll('.gallery__image');
-    targetImg.forEach(el => {
-        if (el === target) {
-            const instance = basicLightbox.create(`<img src=${el.dataset.source}>`)
+    const { target, currentTarget } = event;
+    if (currentTarget !== target) {
+            const instance = basicLightbox.create(`<img src=${target.dataset.source}>`)
             instance.show();
             window.addEventListener('keydown', onEscapeBtnPush = ev => {
                 if (ev.code !== 'Escape') {
-                    return;
+                    return
                 } else {
-                    console.log('escape pressed');
+                    // console.log('escape pressed');
                     instance.close();
                     window.removeEventListener('keydown', onEscapeBtnPush);
                 }
         })
         }
-    })
 }
 galleryElements.addEventListener('click', onPictureClick)
 
