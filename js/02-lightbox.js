@@ -10,14 +10,12 @@ galleryItems.forEach(i => {
             class="gallery__image"
             src="${i.preview}"
             alt="${i.description}"
-            title="${i.description}"
         />
     </a>`
 
     divElement.insertAdjacentHTML('beforeend', galleryItemElement);
 })
 
-const lightbox = new SimpleLightbox('.gallery a', {captionDelay: 250, navText: ['P R E V ←','N E X T →'], overlayOpacity: 0.8});
-// lightbox.open();
+const lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250, navText: ['P R E V ←','N E X T →'], overlayOpacity: 0.8});
 
 console.log(galleryItems);
